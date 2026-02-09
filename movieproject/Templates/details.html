@@ -1,17 +1,30 @@
 {% extends 'base.html' %}
 {% block body %}
+
+<div class="page-header">
+    <h1 class="page-title">Movie Details</h1>
+</div>
+
 <div class="container">
-    <div class="row">
-        <div class="col-md-6" align="center">
-            <img src="{{Movies.Images.url}}" height="300">
-        </div>
-        <div class="col-md-6">
-            <h3>{{Movies.Name}}</h3>
-            <h6>{{Movies.Year}}</h6>
-            <small>{{Movies.Description}}</small>
-            <br><br>
-            <a class="btn btn-warning" href="{% url 'movieapp:update' Movies.id %}">Update</a>
-            <a class="btn btn-danger" href="{% url 'movieapp:delete' Movies.id %}">Delete</a>
+    <div class="movie-details-container">
+        <div class="movie-details-grid">
+            <div class="movie-poster-section">
+                <div class="movie-poster">
+                    <img src="{{Movies.Images.url}}" alt="{{Movies.Name}}" class="movie-poster-img">
+                </div>
+            </div>
+            <div class="movie-info">
+                <h2>{{Movies.Name}}</h2>
+                <div class="movie-meta">
+                    <span class="year-badge">{{Movies.Year}}</span>
+                </div>
+                <p class="movie-description-full">{{Movies.Description}}</p>
+                <div class="movie-actions">
+                    <a href="{% url 'movieapp:update' Movies.id %}" class="btn-warning">Update Movie</a>
+                    <a href="{% url 'movieapp:delete' Movies.id %}" class="btn-danger">Delete Movie</a>
+                    <a href="/" class="btn-futuristic">Back to Collection</a>
+                </div>
+            </div>
         </div>
     </div>
 </div>
